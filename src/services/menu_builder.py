@@ -27,8 +27,8 @@ class MenuBuilder:
     def get_main_menu(self, restriction=None) -> pd.DataFrame:
         new_menu = list()
         for dish in self.menu_data.dishes:
-            restrictions = dish.get_restrictions()
-            if restriction not in restrictions:
+            dish_restrictions = dish.get_restrictions()
+            if restriction not in dish_restrictions:
                 new_menu.append(dish)
         dishes = set(new_menu)
 
