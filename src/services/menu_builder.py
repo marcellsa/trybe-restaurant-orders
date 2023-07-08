@@ -28,7 +28,10 @@ class MenuBuilder:
         new_menu = list()
         for dish in self.menu_data.dishes:
             dish_restrictions = dish.get_restrictions()
-            if restriction not in dish_restrictions:
+            if (
+                restriction not in dish_restrictions
+                and self.inventory.check_recipe_availability(dish.recipe)
+            ):
                 new_menu.append(dish)
         dishes = set(new_menu)
 
